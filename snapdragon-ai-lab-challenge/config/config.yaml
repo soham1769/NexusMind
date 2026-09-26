@@ -1,0 +1,39 @@
+app:
+  name: "SnapVision AI"
+  version: "1.0.0"
+  target_device: "Snapdragon X Elite (HP Copilot+ PC)"
+  environment: "production"
+
+qualcomm_ai_hub:
+  api_token_env_var: "QAI_HUB_API_TOKEN"
+  default_device_name: "Snapdragon X Elite CRD"
+  target_chipset: "snapdragon_x_elite"
+  models:
+    vision_classifier:
+      model_id: "mobilenet_v4"
+      hub_id: "mobilenet_v4"
+      quantization: "w8a8"
+      target_runtime: "qnn_context_binary"
+    object_detector:
+      model_id: "yolov8_det"
+      hub_id: "yolov8_det"
+      quantization: "w8a8"
+      target_runtime: "onnx"
+
+hardware_acceleration:
+  execution_provider_priority:
+    - "QNNExecutionProvider"
+    - "DmlExecutionProvider"
+    - "CPUExecutionProvider"
+  qnn_config:
+    backend_path: "QnnHtp.dll"
+    profiling_level: "basic"
+    htp_performance_mode: "burst"
+    precision: "int8"
+
+inference:
+  batch_size: 1
+  input_width: 224
+  input_height: 224
+  warmup_iterations: 5
+  benchmark_iterations: 50

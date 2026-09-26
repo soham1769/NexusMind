@@ -1,0 +1,23 @@
+# Qualcomm AI Hub SDK for cloud compilation & model access
+qai-hub>=0.18.0
+
+# ONNX Runtime with Execution Provider support
+# Note: For Snapdragon NPU hardware acceleration on Windows ARM64 Copilot+ PCs,
+# install onnxruntime-qnn or configure QNN Execution Provider binaries.
+onnxruntime>=1.18.0
+onnx>=1.16.0
+
+# Numerical & Image Processing
+numpy>=1.24.0,<2.0.0
+pillow>=10.0.0
+opencv-python-headless>=4.8.0
+
+# Data Validation & Configuration
+pydantic>=2.5.0
+pyyaml>=6.0.1
+rich>=13.7.0
+tqdm>=4.66.0
+
+# PyTorch (for tokenization, tensor manipulation & fallback)
+torch>=2.2.0 --extra-index-url https://download.pytorch.org/whl/cpu
+torchvision>=0.17.0 --extra-index-url https://download.pytorch.org/whl/cpu

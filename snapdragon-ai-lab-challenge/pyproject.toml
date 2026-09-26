@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snapvision-ai"
+version = "1.0.0"
+description = "On-Device Snapdragon NPU Accelerated Vision & Productivity Suite for HP Copilot+ PCs"
+readme = "README.md"
+authors = [
+    { name = "Snapdragon AI Lab Submission Team", email = "developer@example.com" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = [
+    "snapdragon",
+    "qualcomm-ai-hub",
+    "hexagon-npu",
+    "qnn",
+    "onnxruntime",
+    "hp-copilot-plus",
+    "on-device-ai",
+    "computer-vision"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "qai-hub>=0.18.0",
+    "onnxruntime>=1.18.0",
+    "onnx>=1.16.0",
+    "numpy>=1.24.0,<2.0.0",
+    "pillow>=10.0.0",
+    "opencv-python-headless>=4.8.0",
+    "pydantic>=2.5.0",
+    "pyyaml>=6.0.1",
+    "rich>=13.7.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.11.0",
+    "flake8>=6.1.0",
+]
+
+[project.scripts]
+snapvision = "src.main:main"
+snapvision-benchmark = "src.benchmark:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
